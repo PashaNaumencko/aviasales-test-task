@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import './styles.scss';
@@ -6,11 +6,8 @@ import { ITabs } from './types/ITabs';
 
 const Tabs: React.FC = () => {
   const [activeTabId, setActiveTabId] = useState(0);
-  const onTabClick = useCallback((tabId: number) => () => {
+  const onTabClick = (tabId: number) => () => setActiveTabId(tabId);
 
-    setActiveTabId(tabId)
-  } , []);
-  console.log('render');
   const tabs: ITabs[] = [
     {
       id: 0,
