@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+
+.filters {
+  padding: 25px;
+  background: #FFFFFF;
+  box-shadow: $block-shadow;
+  border-radius: 5px;
+  &__header {
+    font-family: $semibold-font;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+}
+
+.check {
+  padding-left: 2rem;
+  font-family: $regular-font;
+  font-size: 0.85rem;
+  color: #4A4A4A;
+  line-height: 20px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  &__box {
+    position: absolute;
+    margin-left: -2rem;
+    margin-top: -0.125rem;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    border: 1px solid #2196F3;
+    cursor: pointer;
+    user-select: none;
+    background-color: #ffffff;
+  }
+  input:checked + .check__box {
+    background: url('./check.svg') center no-repeat;
+  }
+  input:focus + .check__box {
+    box-shadow: 0 0 0 0.1em #4A90E2;
+  }
+}

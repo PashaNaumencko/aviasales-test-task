@@ -23,3 +23,15 @@ body {
   max-width: 100%;
   height: auto;
 }
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
