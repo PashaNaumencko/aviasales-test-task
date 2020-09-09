@@ -1,9 +1,9 @@
 import { GET_TICKETS, GET_TICKETS_ERROR, GET_TICKETS_LOADING } from '../actionTypes';
-import { Ticket } from './Ticket';
+import { ITicket } from './ITicket';
 
 interface GetTicketsAction {
   type: typeof GET_TICKETS;
-  payload: Ticket[];
+  payload: ITicket[];
 }
 
 interface GetTicketLoading {

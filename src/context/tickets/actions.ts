@@ -1,8 +1,31 @@
 import { GET_TICKETS, GET_TICKETS_LOADING, GET_TICKETS_ERROR } from './actionTypes';
-import { Ticket } from './types/Ticket';
-import { TicketsAction } from './types/TicketsAction';
+import { ITicket, TicketsAction, ISearchResponse, ITicketsResponse } from './types'
+import { callApi } from '../../helpers/callWebApi';
 
-export const getTickets = (tickets: Ticket[]): TicketsAction => ({
+export const getTicketsRequest = async (dispatch: (value: TicketsAction) => void) => {
+  try {
+    dispatch(getTicketsLoading(true));
+    const { searchId } = await callApi<ISearchResponse>({
+      endpoint: '/search',
+      type: 'GET'
+    });
+    const { tickets } = await callApi<ITicketsResponse>({
+      endpoint: '/tickets',
+      type: 'GET',
+      query: {
+        searchId
+      }
+    })
+
+    dispatch(getTickets(tickets));
+  } catch (error) {
+    dispatch(getTicketsError(error));
+  } finally {
+    dispatch(getTicketsLoading(false));
+  }
+};
+
+export const getTickets = (tickets: ITicket[]): TicketsAction => ({
   type: GET_TICKETS,
   payload: tickets
 });

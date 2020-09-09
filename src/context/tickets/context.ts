@@ -1,8 +1,8 @@
 import { createContext } from 'react'
 import { initialState } from './reducer';
-import { TicketsContextType } from './types/TicketContextType';
+import { ITicketContext } from './types';
 
-export const TicketsContext = createContext<TicketsContextType>({
+export const TicketsContext = createContext<ITicketContext>({
   ...initialState,
   dispatch: () => {}
 });

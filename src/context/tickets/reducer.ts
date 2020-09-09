@@ -1,18 +1,17 @@
 import { GET_TICKETS, GET_TICKETS_LOADING, GET_TICKETS_ERROR } from './actionTypes';
-import { TicketsState } from './types/TicketsState';
-import { TicketsAction } from './types/TicketsAction';
+import { ITicketsState, TicketsAction } from './types';
 
-export const initialState: TicketsState = {
+export const initialState: ITicketsState = {
   tickets: [],
   loading: false,
   error: null
 }
 
 const handlers = {
-  [GET_TICKETS]: (state: TicketsState, { payload }: TicketsAction) => ({ ...state, tickets: payload }),
-  [GET_TICKETS_LOADING]: (state: TicketsState) => ({ ...state, loading: false }),
-  [GET_TICKETS_ERROR]: (state: TicketsState, { payload }: TicketsAction) => ({ ...state, error: payload }),
-  DEFAULT: (state: TicketsState) => state
+  [GET_TICKETS]: (state: ITicketsState, { payload }: TicketsAction) => ({ ...state, tickets: payload }),
+  [GET_TICKETS_LOADING]: (state: ITicketsState) => ({ ...state, loading: false }),
+  [GET_TICKETS_ERROR]: (state: ITicketsState, { payload }: TicketsAction) => ({ ...state, error: payload }),
+  DEFAULT: (state: ITicketsState) => state
 };
 
 export const ticketsReducer = (state = initialState, action: TicketsAction) => {

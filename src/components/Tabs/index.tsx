@@ -2,12 +2,16 @@ import React, { useState, useCallback } from 'react';
 import classNames from 'classnames';
 
 import './styles.scss';
+import { ITabs } from './types/ITabs';
 
-export const Tabs: React.FC = () => {
+const Tabs: React.FC = () => {
   const [activeTabId, setActiveTabId] = useState(0);
-  const onTabClick = useCallback((tabId) => () => setActiveTabId(tabId), []);
+  const onTabClick = useCallback((tabId: number) => () => {
 
-  const tabs = [
+    setActiveTabId(tabId)
+  } , []);
+  console.log('render');
+  const tabs: ITabs[] = [
     {
       id: 0,
       text: 'Самый дешевый'
@@ -22,6 +26,7 @@ export const Tabs: React.FC = () => {
     <div className="tabs">
       {tabs.map(({ id, text }) => (
         <div
+          key={id}
           className={classNames("tabs__item", { "tabs__item--active": activeTabId === id })}
           onClick={onTabClick(id)}
         >
@@ -31,3 +36,5 @@ export const Tabs: React.FC = () => {
     </div>
   );
 }
+
+export default Tabs;
