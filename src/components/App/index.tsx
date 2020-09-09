@@ -3,6 +3,7 @@ import TicketsProvider from '../../providers/TicketProvider/TicketsProvider';
 import Header from '../Header';
 import Tabs from '../Tabs';
 import Filters from '../Filters';
+import Tickets from '../Tickets';
 
 import '../../styles/main.scss';
 import './styles.scss';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           </div>
           <div className="right-side">
             <Tabs />
+            <Tickets />
           </div>
         </div>
       </div>

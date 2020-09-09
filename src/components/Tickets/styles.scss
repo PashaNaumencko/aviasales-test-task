@@ -1,0 +1,38 @@
+@import '../../styles/variables.scss';
+
+.ticket {
+  background: #FFFFFF;
+  box-shadow: $block-shadow;
+  border-radius: 5px;
+  padding: 20px;
+  padding-right: 45px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__price {
+    color: #2196F3;
+    font-size: 1.5rem;
+    line-height: 1.3rem;
+    font-family: $semibold-font;
+  }
+}
+
+.segment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5px;
+  &__title {
+    color: #A0B0B9;
+    font-family: $semibold-font;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    &--darked {
+      color: #4A4A4A;
+      font-size: 0.88rem;
+    }
+  }
+}

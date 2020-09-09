@@ -20,7 +20,7 @@ const Tabs: React.FC = () => {
   ];
 
   return (
-    <div className="tabs">
+    <div className="tabs mb-20">
       {tabs.map(({ id, text }) => (
         <div
           key={id}

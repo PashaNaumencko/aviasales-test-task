@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
-
+import React from 'react';
 import './styles.scss';
 
 const Filters: React.FC = () => {
-  const [activeTabId, setActiveTabId] = useState(0);
-  const onTabClick = (tabId: number) => () => setActiveTabId(tabId);
-
   return (
     <div className="filters">
       <div className="filters__header mb-20">Количество пересадок</div>
