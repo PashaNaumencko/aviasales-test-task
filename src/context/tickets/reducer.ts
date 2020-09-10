@@ -9,7 +9,7 @@ export const initialState: ITicketsState = {
 
 const handlers = {
   [GET_TICKETS]: (state: ITicketsState, { payload }: TicketsAction) => ({ ...state, tickets: payload }),
-  [GET_TICKETS_LOADING]: (state: ITicketsState) => ({ ...state, loading: false }),
+  [GET_TICKETS_LOADING]: (state: ITicketsState, { payload }: TicketsAction) => ({ ...state, loading: payload }),
   [GET_TICKETS_ERROR]: (state: ITicketsState, { payload }: TicketsAction) => ({ ...state, error: payload }),
   DEFAULT: (state: ITicketsState) => state
 };

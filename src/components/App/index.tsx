@@ -8,8 +8,6 @@ import Tickets from '../Tickets';
 import '../../styles/main.scss';
 import './styles.scss';
 
-
-
 const App: React.FC = () => {
   return (
     <TicketsProvider>

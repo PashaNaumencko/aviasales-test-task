@@ -17,7 +17,7 @@ export const getTicketsRequest = async (dispatch: (value: TicketsAction) => void
       }
     })
 
-    dispatch(getTickets(tickets));
+    dispatch(getTickets(tickets.slice(0, 10)));
   } catch (error) {
     dispatch(getTicketsError(error));
   } finally {
