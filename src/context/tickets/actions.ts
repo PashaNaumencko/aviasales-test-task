@@ -3,7 +3,9 @@ import {
   GET_TICKETS_LOADING,
   GET_TICKETS_ERROR,
   SORT_TICKETS_BY_PRICE,
-  SORT_TICKETS_BY_TIME
+  SORT_TICKETS_BY_TIME,
+  RESET_TICKETS,
+  FILTER_TICKETS_BY_TRANSFER_COUNT
 } from './actionTypes';
 import {
   ITicket,
@@ -12,6 +14,7 @@ import {
   ITicketsResponse
 } from './types';
 import { callApi } from '../../helpers/callWebApi';
+import { getInitialTicketState, setInitialTicketState } from '../../helpers/localStorageHelper';
 
 export const getTicketsRequest = async (dispatch: (value: TicketsAction) => void) => {
   try {
@@ -27,6 +30,7 @@ export const getTicketsRequest = async (dispatch: (value: TicketsAction) => void
         searchId
       }
     });
+    setInitialTicketState(tickets.slice(0, 10));
     dispatch(getTickets(tickets.slice(0, 10)));
     dispatch(sortTicketsByPrice());
   } catch (error) {
@@ -49,6 +53,19 @@ export const sortTicketsByPrice = (): TicketsAction => ({
 export const sortTicketsByTime = (): TicketsAction => ({
   type: SORT_TICKETS_BY_TIME,
   payload: null
+});
+
+export const resetTickets = (): TicketsAction => ({
+  type: RESET_TICKETS,
+  payload: getInitialTicketState()
+});
+
+export const filterTicketsByTransferCount = (numOfTransfers: number[]): TicketsAction => ({
+  type: FILTER_TICKETS_BY_TRANSFER_COUNT,
+  payload: {
+    initTickets: getInitialTicketState(),
+    numOfTransfers
+  }
 });
 
 export const getTicketsLoading = (loading: boolean): TicketsAction => ({

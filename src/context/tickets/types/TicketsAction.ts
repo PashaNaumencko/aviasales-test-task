@@ -3,7 +3,9 @@ import {
   GET_TICKETS_ERROR,
   GET_TICKETS_LOADING,
   SORT_TICKETS_BY_PRICE,
-  SORT_TICKETS_BY_TIME
+  SORT_TICKETS_BY_TIME,
+  RESET_TICKETS,
+  FILTER_TICKETS_BY_TRANSFER_COUNT
 } from '../actionTypes';
 import { ITicket } from './ITicket';
 
@@ -22,6 +24,19 @@ interface SortTicketsByTimeAction {
   payload: null;
 }
 
+interface ResetTicketsAction {
+  type: typeof RESET_TICKETS;
+  payload: ITicket[];
+}
+
+interface FilterTicketsByTransferCountAction {
+  type: typeof FILTER_TICKETS_BY_TRANSFER_COUNT;
+  payload: {
+    numOfTransfers: number[];
+    initTickets: ITicket[];
+  };
+}
+
 interface GetTicketLoading {
   type: typeof GET_TICKETS_LOADING;
   payload: boolean;
@@ -36,4 +51,6 @@ export type TicketsAction = GetTicketsAction
   | GetTicketLoading
   | GetTicketsError
   | SortTicketsByPriceAction
-  | SortTicketsByTimeAction;
+  | SortTicketsByTimeAction
+  | ResetTicketsAction
+  | FilterTicketsByTransferCountAction;
