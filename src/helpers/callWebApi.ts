@@ -26,7 +26,7 @@ function getFetchArgs(args: IWebApiArgs): RequestInit {
 export function callApi<TResponse>(args: IWebApiArgs): Promise<TResponse> {
   return fetch(getFetchUrl(args), getFetchArgs(args))
     .then((response: Response) =>
-      response.ok ? response.json() : Promise.reject(Error('Failed to load'))
+      response.ok ? response.json() : Promise.reject(Error('Ошибка сервера. Пожалуйста, перезагрузите страницу.'))
     )
     .catch(error => {
       throw error;

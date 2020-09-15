@@ -27,5 +27,4 @@ const App: React.FC = () => {
   );
 };
 
-
-export default React.memo(App);
+export default App;

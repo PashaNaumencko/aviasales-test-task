@@ -1,0 +1,16 @@
+.error {
+  width: 100%;
+  border-radius: 2px;
+  display: flex;
+  border: 1px solid #cccccc;
+  background-color: #f7b3b3;
+  &__message {
+    width: 100%;
+    color: #f04949;
+    line-height: 1.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.7rem 0;
+  }
+}

@@ -8,10 +8,11 @@ import {
   getPrettyFlyingTime
 } from '../../helpers/formatHelper';
 import Loader from '../Loader';
+import Error from '../Error';
 import './styles.scss';
 
 const Tickets: React.FC = () => {
-  const { tickets, loading, dispatch } = useContext(TicketsContext);
+  const { tickets, loading, error, dispatch } = useContext(TicketsContext);
 
   useEffect(() => {
     getTicketsRequest(dispatch);
@@ -21,9 +22,13 @@ const Tickets: React.FC = () => {
     return <Loader />;
   }
 
+  if(error) {
+    return <Error message={error.message} />;
+  }
+
   return (
     <>
-      {tickets.map(({ price, carrier, segments }, idx) => (
+      {tickets.length ? tickets.map(({ price, carrier, segments }, idx) => (
           <div className="ticket mb-20" key={idx}>
             <div className="ticket__header mb-30">
               <div className="ticket__price">{getPrettyPrice(price)}</div>
@@ -54,8 +59,11 @@ const Tickets: React.FC = () => {
                 </div>
               </div>
             ))}
+
           </div>
-        ))}
+        )): (
+          <div className="ticket ticket--empty">Ни одного элемента не найдено</div>
+        )}
     </>
   );
 };
